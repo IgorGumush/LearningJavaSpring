@@ -48,6 +48,13 @@ public class CricketCoach implements ICoach {
 		System.out.println("Using the setter injection | Cricket Coach");
 		this.fortuneService = fortuneService;
 	}
-
+	
+	private void doMySturtupStuff() {
+		System.out.println("Called doMySturtupStuff | Cricket Coach");
+	}
+	
+	private void doMyCleanStuff() {
+		System.out.println("Called doMyCleanStuff | Cricket Coach");
+	}
 	
 }

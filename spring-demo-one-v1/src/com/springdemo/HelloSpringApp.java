@@ -46,11 +46,11 @@ public class HelloSpringApp {
 		CricketCoach myCricketCoach = springFactory.getBean("myCricketCoach", CricketCoach.class);
 		
 		//call methods of the bean
-		System.out.println(myCricketCoach.getDailyWorkout());
+		//System.out.println(myCricketCoach.getDailyWorkout());
 		
 		//No need to inject the Service dependency here, 
 		// Spring already did it using setter (config file.)
-		System.out.println(myCricketCoach.geyDailyFortune());
+		//System.out.println(myCricketCoach.geyDailyFortune());
 		
 		// Check literal setters worked.
 		System.out.println(myCricketCoach.getEmail());
