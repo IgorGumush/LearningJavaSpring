@@ -2,6 +2,7 @@ package com.spring.annotations;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.springdemo.ICoach;
@@ -20,6 +21,12 @@ public class TennisCoach implements ICoach{
 	@Autowired
 	@Qualifier("databaseService")
 	private ISomeService someService; 
+	
+	@Value("${foo.email}")
+	private String email;
+	
+	@Value("${foo.team}")
+	private String team;
 	
 	public TennisCoach() {
 		System.out.println("Default TennisCoach called");
@@ -48,7 +55,7 @@ public class TennisCoach implements ICoach{
 	public String geyDailyFortune() {
 		// use the service
 		String s = this.someService.getSomthingFromService();
-		return s + " | used by TennisCoach";
+		return s + " | used by TennisCoach" + "\n email: " + this.email ;
 	}
 
 }
