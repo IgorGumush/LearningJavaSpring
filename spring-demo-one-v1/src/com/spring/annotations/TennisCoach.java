@@ -13,11 +13,22 @@ public class TennisCoach implements ICoach{
 	
 	private ISomeService someService; 
 	
+	public TennisCoach() {
+		System.out.println("Default TennisCoach called");
+	}
+	
+
+	//@Autowired
+	//public TennisCoach(ISomeService someService) {
+	//	this.someService = someService;
+	//}
+	
 	// Spring going to scan for a component that implements ISomeService 
 	// Auto inject it to the constructor
 	// (If we have more that one it must be annotated so container would know which to use.)
 	@Autowired
-	public TennisCoach(ISomeService someService) {
+	public void setSomeService(ISomeService someService) {
+		System.out.println("Setting autowired someService in TennisCoach Class");
 		this.someService = someService;
 	}
 	
