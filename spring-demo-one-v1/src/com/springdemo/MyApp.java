@@ -9,12 +9,13 @@ public class MyApp {
 		// The a 3 ways (XML / JAVA Annotations / Java Source Code)
 		/* Spring container = Application Context */
 		
-		/*
-		ICoach bCoach = new BaseballCoach();
-		ICoach tCoach = new TrackCoach();
+		IFortuneService fortuneService = new HappyFortuneService();
+		
+		ICoach bCoach = new BaseballCoach(fortuneService);
+		ICoach tCoach = new TrackCoach(fortuneService);
 		
 		System.out.println(tCoach.getDailyWorkout());
-		*/
+		
 	}
 
 }

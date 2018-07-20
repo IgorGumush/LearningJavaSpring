@@ -12,6 +12,8 @@ public class HelloSpringApp {
 		/* Spring container = Application Context */
 		/* Spring Bean = Java object - retrieved for spring container */
 		
+		/* -------------------------- */
+		/* Test constructor injection */
 		
 		//load the spring configuration file.
 		ClassPathXmlApplicationContext context = 
@@ -30,7 +32,30 @@ public class HelloSpringApp {
 		
 		// close the context.
 		context.close();
+		
+		
+		/* --------------------- */
+		/* Test setter injection */
 
+		//load the spring configuration file.
+		ClassPathXmlApplicationContext springFactory = 
+				new ClassPathXmlApplicationContext("applicationContext.xml");
+		
+		//Retrieve bean from spring container
+		/* Why to pass ICoach? Spring would cast the object for me. 
+		 * more safety by throwing a BeanNotOfRequiredTypeException if the bean is not of the required type */ 
+		ICoach myCricketCoach = springFactory.getBean("myCricketCoach", ICoach.class);
+		
+		//call methods of the bean
+		System.out.println(myCricketCoach.getDailyWorkout());
+		
+		//No need to inject the Service dependency here, 
+		// Spring already did it using setter (config file.)
+		System.out.println(myCricketCoach.geyDailyFortune());
+		
+		// close the context.
+		springFactory.close();
+		
 	}
 
 }
