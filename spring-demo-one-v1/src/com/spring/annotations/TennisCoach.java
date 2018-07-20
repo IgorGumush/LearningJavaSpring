@@ -19,7 +19,7 @@ public class TennisCoach implements ICoach{
 	// We'll specify using "@Qualifier" annotation.
 	/** Done using reflection **/
 	@Autowired
-	@Qualifier("databaseService")
+	@Qualifier("fortuneService")
 	private ISomeService someService; 
 	
 	@Value("${foo.email}")
