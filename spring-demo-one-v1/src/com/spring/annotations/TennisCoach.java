@@ -1,6 +1,7 @@
 package com.spring.annotations;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import com.springdemo.ICoach;
@@ -13,9 +14,11 @@ public class TennisCoach implements ICoach{
 	
 	// Spring going to scan for a component that implements ISomeService 
 	// Spring understands that it should set this value even there is no setter
-	// (If we have more that one it must be annotated so container would know which to use.)
+	// If we have more that one it must be annotated so container would know which to use. "NoUniqueBeanException"
+	// We'll specify using "@Qualifier" annotation.
 	/** Done using reflection **/
 	@Autowired
+	@Qualifier("databaseService")
 	private ISomeService someService; 
 	
 	public TennisCoach() {
