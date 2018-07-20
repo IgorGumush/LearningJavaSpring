@@ -20,6 +20,11 @@
     	<!-- Define setter injection -->
     	<!-- The name of the setter have to match + 'set' (setFortuneService) -->
     	<property name="fortuneService" ref="myFortuneService"></property>
+    	
+    	<!-- ref is for object | value is for literal value -->
+    	<!-- The name of the setter have to match + 'set' (setEmail, setTeam) -->
+    	<property name="email" value="igor@gmail.com"></property>
+    	<property name="team" value="Igors Team"></property>
     </bean>
     
     

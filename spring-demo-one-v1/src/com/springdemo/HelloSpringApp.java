@@ -33,7 +33,6 @@ public class HelloSpringApp {
 		// close the context.
 		context.close();
 		
-		
 		/* --------------------- */
 		/* Test setter injection */
 
@@ -44,7 +43,7 @@ public class HelloSpringApp {
 		//Retrieve bean from spring container
 		/* Why to pass ICoach? Spring would cast the object for me. 
 		 * more safety by throwing a BeanNotOfRequiredTypeException if the bean is not of the required type */ 
-		ICoach myCricketCoach = springFactory.getBean("myCricketCoach", ICoach.class);
+		CricketCoach myCricketCoach = springFactory.getBean("myCricketCoach", CricketCoach.class);
 		
 		//call methods of the bean
 		System.out.println(myCricketCoach.getDailyWorkout());
@@ -52,6 +51,10 @@ public class HelloSpringApp {
 		//No need to inject the Service dependency here, 
 		// Spring already did it using setter (config file.)
 		System.out.println(myCricketCoach.geyDailyFortune());
+		
+		// Check literal setters worked.
+		System.out.println(myCricketCoach.getEmail());
+		System.out.println(myCricketCoach.getTeam());
 		
 		// close the context.
 		springFactory.close();
