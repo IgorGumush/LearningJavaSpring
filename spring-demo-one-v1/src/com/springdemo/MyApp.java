@@ -8,10 +8,13 @@ public class MyApp {
 		//Give me object (Using spring object factory) - using configuration file.
 		// The a 3 ways (XML / JAVA Annotations / Java Source Code)
 		/* Spring container = Application Context */
+		
+		/*
 		ICoach bCoach = new BaseballCoach();
 		ICoach tCoach = new TrackCoach();
 		
 		System.out.println(tCoach.getDailyWorkout());
+		*/
 	}
 
 }

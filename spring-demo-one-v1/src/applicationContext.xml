@@ -7,8 +7,14 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
 
+	<!-- Define dependency -->
+	<bean id="myFortune" class="com.springdemo.HappyFortuneService"></bean>
+
     <!-- Define your beans here -->
-    <bean id="myCoach" class="com.springdemo.TrackCoach"></bean>
+    <bean id="myCoach" class="com.springdemo.TrackCoach">
+    	<!-- Constructor Injection -->
+    	<constructor-arg ref="myFortune"></constructor-arg>
+    </bean>
     
     
 </beans>

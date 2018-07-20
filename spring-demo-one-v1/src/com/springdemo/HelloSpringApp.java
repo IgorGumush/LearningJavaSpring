@@ -18,10 +18,15 @@ public class HelloSpringApp {
 				new ClassPathXmlApplicationContext("applicationContext.xml");
 		
 		//Retrieve bean from spring container
+		/* Why to pass ICoach? Spring would cast the object for me. 
+		 * more safety by throwing a BeanNotOfRequiredTypeException if the bean is not of the required type */ 
 		ICoach theCoach = context.getBean("myCoach", ICoach.class);
 		
 		//call methods of the bean
 		System.out.println(theCoach.getDailyWorkout());
+		
+		//No need to inject the Service dependency here, Spring already did it (config file.)
+		System.out.println(theCoach.geyDailyFortune());
 		
 		// close the context.
 		context.close();
