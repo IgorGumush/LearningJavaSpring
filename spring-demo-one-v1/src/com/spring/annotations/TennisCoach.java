@@ -1,5 +1,6 @@
 package com.spring.annotations;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.springdemo.ICoach;
@@ -9,17 +10,27 @@ import com.springdemo.ICoach;
 //We can use @Component without specifying name, than class name used but with lower letter (tennisCoach)
 @Component("myTennisCoach")
 public class TennisCoach implements ICoach{
-
+	
+	private ISomeService someService; 
+	
+	// Spring going to scan for a component that implements ISomeService 
+	// Auto inject it to the constructor
+	// (If we have more that one it must be annotated so container would know which to use.)
+	@Autowired
+	public TennisCoach(ISomeService someService) {
+		this.someService = someService;
+	}
+	
 	@Override
 	public String getDailyWorkout() {
 		return "Tennis Coach | Daily Workout";
 	}
 
-	//Not relevant to this example
 	@Override
 	public String geyDailyFortune() {
-		// TODO Auto-generated method stub
-		return null;
+		// use the service
+		String s = this.someService.getSomthingFromService();
+		return s + " | used by TennisCoach";
 	}
 
 }

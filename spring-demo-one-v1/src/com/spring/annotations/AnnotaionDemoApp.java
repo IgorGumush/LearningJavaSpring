@@ -11,12 +11,15 @@ public class AnnotaionDemoApp {
 		// read spring config
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContextAnnotations.xml");
 
-		// get bean
+		// get bean - 
+		// Constructor should get ISomeService
+		// Spring search for a class that Implements it and injects it to the constructor.
 		ICoach theCoach = context.getBean("myTennisCoach", ICoach.class);
 		
 		// call method
 		System.out.println(theCoach.getDailyWorkout());
-
+		System.out.println(theCoach.geyDailyFortune());
+		
 		// close context/factory.
 		context.close();
 	}
