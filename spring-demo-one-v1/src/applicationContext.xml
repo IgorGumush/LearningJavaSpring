@@ -14,12 +14,21 @@
 	<bean id="myFortuneService" class="com.springdemo.HappyFortuneService"></bean>
 
     <!-- Define your beans here -->
-    <bean id="myCoach" class="com.springdemo.TrackCoach">
+    <!-- Scope : singleton/prototype/request/session/global-session -->
+    <!-- singleton - return the same obj one on each call -->
+    <!-- prototype - create new obj on each call -->
+    <bean id="myCoach" class="com.springdemo.TrackCoach" scope="prototype">
     	<!-- Constructor Injection -->
     	<constructor-arg ref="myFortuneService"></constructor-arg>
     </bean>
     
-    <bean id="myCricketCoach" class="com.springdemo.CricketCoach">
+    <!-- destroy and init method can be used to run some code -->
+    <!-- Note: can't catch return value , can't get arguments-->
+    <!-- Note: For "prototype" scoped beans, Spring does not call the destroy method -->
+    
+    <bean id="myCricketCoach" class="com.springdemo.CricketCoach"
+    	init-method="doMySturtupStuff"
+    	destroy-method="doMyCleanStuff">
     	<!-- Define setter injection -->
     	<!-- The name of the setter have to match + 'set' (setFortuneService) -->
     	<property name="fortuneService" ref="myFortuneService"></property>
